@@ -11,6 +11,8 @@ function SearchBar({ setSearchAthlete }: SearchBarProps) {
         event.preventDefault(); 
         if (search.length > 0) {
             setSearchAthlete(search);
+        } else {
+            setSearchAthlete("");
         }
     }
 

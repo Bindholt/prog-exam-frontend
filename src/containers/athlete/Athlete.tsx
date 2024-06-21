@@ -6,7 +6,8 @@ import AthleteResult from "./components/AthleteResult";
 import AthleteCreateButton from "./components/AthleteCreateButton";
 import useDisciplines from "../../hooks/useDisciplines";
 import AthleteFilter from "./components/AthleteFilter";
-import { calculateAge } from "../../helpers/calcAge";
+import { sortAthletes } from "../../helpers/sorting";
+import { filterAthletes } from "../../helpers/filter";
 
 function Athlete() {
     const {athletes, fetchAthletesByName, createAthlete, patchAthlete, deleteAthlete} = useAthletes();
@@ -19,59 +20,13 @@ function Athlete() {
 
     useEffect(() => {
         if (!athletes) return;
-        const filtered = athletes.filter(athlete => {
-            if (filters.discipline && athlete.disciplines) {
-                return athlete.disciplines.includes(filters.discipline);
-            }
-            if (filters.ageGroup && athlete.birthdate) {
-                const age = calculateAge(athlete.birthdate);
-                if (filters.ageGroup === "9") {
-                    return age >= 6 && age <= 9;
-                } else if (filters.ageGroup === "13") {
-                    return age >= 10 && age <= 13;
-                } else if (filters.ageGroup === "22") {
-                    return age >= 14 && age <= 22;
-                } else if (filters.ageGroup === "40") {
-                    return age >= 23 && age <= 40;
-                } else if (filters.ageGroup === "41") {
-                    return age >= 41;
-                }
-            }
-            if(filters.gender && athlete.gender) {
-                if(filters.gender === "mand") {
-                    return athlete.gender === "Mand";
-                } else if (filters.gender === "kvinde") {
-                    return athlete.gender === "Kvinde";
-                } else if (filters.gender === "andet") {
-                    return athlete.gender !== "Mand" && athlete.gender !== "Kvinde";
-                }
-            }
-            return true;
-        });
-
+        const filtered = filterAthletes({athletes, filters});
         setModifiedAthleteList(filtered);
     }, [filters, athletes]);
 
     useEffect(() => {
         if (!athletes) return;
-
-        const sorted = [...athletes].sort((a, b) => {
-            if (sortCriteria === "birthdate" && sortOrder === "asc") {
-                return new Date(a.birthdate).getTime() - new Date(b.birthdate).getTime();
-            } else if (sortCriteria === "birthdate" && sortOrder === "desc") {
-                return new Date(b.birthdate).getTime() - new Date(a.birthdate).getTime();
-            } else if (sortCriteria === "gender" && sortOrder === "asc") {
-                return a.gender.localeCompare(b.gender);
-            } else if (sortCriteria === "gender" && sortOrder === "desc") {
-                return b.gender.localeCompare(a.gender);
-            } else if (sortCriteria === "club" && sortOrder === "asc") {
-                return a.club.localeCompare(b.club);
-            } else if (sortCriteria === "club" && sortOrder === "desc") {
-                return b.club.localeCompare(a.club);
-            }
-            return 0; 
-        });
-
+        const sorted = sortAthletes({athletes, sortCriteria, sortOrder});
         setModifiedAthleteList(sorted);
     }, [sortCriteria, sortOrder]);
 

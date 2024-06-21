@@ -26,13 +26,22 @@ function Disciplines() {
 
     return (
         <PageLayout>
-        {disciplines.map((discipline, index) => {
-            return (
-                <div key={index} className="flex flex-col border border-zinc-400 rounded-md bg-zinc-100 mt-5 w-7/12">
-                    <Discipline discipline={discipline} onConfirm={onConfirm} onDelete={onDelete} onEditResult={onEditResult} />
+            <div className="flex flex-row">
+                <div className="flex flex-col w-full">
+                    {disciplines.map((discipline, index) => {
+                        return (
+                            <div key={index} className="flex flex-col border border-zinc-400 rounded-md bg-zinc-100 mt-5 w-7/12">
+                                <Discipline discipline={discipline} onConfirm={onConfirm} onDelete={onDelete} onEditResult={onEditResult} />
+                            </div>
+                        )
+                    })}
                 </div>
-            )
-        })}
+                {/* <div className="flex">
+                    <button className="bg-zinc-300 border-zinc-500 border cursor-pointer text-gray-600 h-14 px-4 my-2.5 rounded-md hover:bg-zinc-50 "> Tilføj disciplin </button>
+                </div> */}
+            </div>
+            
+            
         </PageLayout>
         
     );

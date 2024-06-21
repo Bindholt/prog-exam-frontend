@@ -8,7 +8,7 @@ function AthleteFilter( {setFilters, disciplines}: AthleteFilterProps) {
 
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col w-96">
             <div className="m-2.5 font-bold text-2xl">
                 Filters
             </div>
