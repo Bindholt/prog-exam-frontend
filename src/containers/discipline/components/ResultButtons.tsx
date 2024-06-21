@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ConfirmModal } from "../../../components/Modal";
-import { EditModal } from "./DisciplineModal";
+import { EditModal } from "./ResultModal";
 import { MdOutlineCancel } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 
@@ -11,7 +11,7 @@ interface IAthleteButtonsProps {
     result: IResult;
 }
 
-function DisciplineButtons({onDelete, onEditResult, result} : IAthleteButtonsProps) {
+function ResultButtons({onDelete, onEditResult, result} : IAthleteButtonsProps) {
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -35,4 +35,4 @@ function DisciplineButtons({onDelete, onEditResult, result} : IAthleteButtonsPro
     );
 }
 
-export default DisciplineButtons;
+export default ResultButtons;

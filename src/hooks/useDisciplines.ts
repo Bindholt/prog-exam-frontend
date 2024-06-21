@@ -24,6 +24,30 @@ function useDisciplines() {
         fetchDisciplines().then(() => setLoading(false));
     }, [results]);
 
+    const createDiscipline = async (discipline: Partial<IDiscipline>) => {
+        try {
+            const newDiscipline = await disciplineDataService.create(discipline);
+            setDisciplines([...disciplines, newDiscipline]);
+            toast.success("Disciplin oprettet");
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                toast.error("Failed to create discipline" + error.message);
+            }
+        }
+    }
+
+    const deleteDiscipline = async (id: number) => {
+        try {
+            await disciplineDataService.delete(id);
+            setDisciplines(disciplines.filter(discipline => discipline.id !== id));
+            toast.success("Disciplin slettet");
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                toast.error("Failed to delete discipline" + error.message);
+            }
+        }
+    }
+
     const createResult = async (result: Partial<IResult>) => {
         try {
             const newResult = await resultDataService.create(result);
@@ -60,7 +84,7 @@ function useDisciplines() {
         }
     }
 
-    return { disciplines, loading, createResult, patchResult, deleteResult };
+    return { disciplines, loading, createResult, patchResult, deleteResult, createDiscipline, deleteDiscipline };
 
 }
 

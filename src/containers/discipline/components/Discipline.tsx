@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import DisciplineButtons from "./DisciplineButtons";
+import ResultButtons from "./ResultButtons";
 import DisciplineHeader from "./DisciplineHeader"
 import ResultHeaders from "./ResultHeaders";
 import ResultLine from "./ResultLine";
@@ -38,7 +38,7 @@ function Discipline({discipline, onConfirm, onDelete, onEditResult} : IDisciplin
                                 >
                                     <ResultLine result={result} />
                                 </div>
-                                <DisciplineButtons onDelete={onDelete} onEditResult={onEditResult} result={result} />
+                                <ResultButtons onDelete={onDelete} onEditResult={onEditResult} result={result} />
                             </div>
                         )
                     })}

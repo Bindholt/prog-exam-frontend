@@ -1,12 +1,18 @@
 import PageLayout from "../../components/PageLayout";
 import useDisciplines from "../../hooks/useDisciplines";
 import Discipline from "./components/Discipline";
+import DisciplineCreateButton from "./components/DisciplineCreateButton";
+import DisciplineDeleteButton from "./components/DisciplineDeleteButton";
 
 function Disciplines() {
-    const {disciplines, patchResult, deleteResult, createResult} = useDisciplines();
+    const {disciplines, patchResult, deleteResult, createResult, createDiscipline, deleteDiscipline} = useDisciplines();
     
     const onDelete = async (id: number) => {
         await deleteResult(id);
+    }
+
+    const onDeleteDiscipline = async (id: number) => {
+        await deleteDiscipline(id);
     }
 
     const onEditResult = async (editedResult: string, id:number) => {
@@ -23,6 +29,14 @@ function Disciplines() {
             }
         }
     }
+    async function onCreateDiscipline(name: string, resultType: string) {
+        const discipline = { name, resultType }
+        try {
+            await createDiscipline(discipline);
+        } catch (error) {
+            console.error(`Error creating discipline: ${error}`);
+        }
+    }
 
     return (
         <PageLayout>
@@ -30,15 +44,21 @@ function Disciplines() {
                 <div className="flex flex-col w-full">
                     {disciplines.map((discipline, index) => {
                         return (
-                            <div key={index} className="flex flex-col border border-zinc-400 rounded-md bg-zinc-100 mt-5 w-7/12">
-                                <Discipline discipline={discipline} onConfirm={onConfirm} onDelete={onDelete} onEditResult={onEditResult} />
+                            <div key={index} className="flex">
+                                <div className="flex flex-col border border-zinc-400 rounded-md bg-zinc-100 mt-5 w-7/12">
+                                    <Discipline discipline={discipline} onConfirm={onConfirm} onDelete={onDelete} onEditResult={onEditResult} />
+                                </div>
+                                <div className="flex items-center justify-center">
+                                    {discipline.results.length <= 0 && 
+                                        <DisciplineDeleteButton onDeleteDiscipline={onDeleteDiscipline} disciplineId={discipline.id}/>
+                                    }
+                                </div>
                             </div>
+                            
                         )
                     })}
                 </div>
-                {/* <div className="flex">
-                    <button className="bg-zinc-300 border-zinc-500 border cursor-pointer text-gray-600 h-14 px-4 my-2.5 rounded-md hover:bg-zinc-50 "> Tilføj disciplin </button>
-                </div> */}
+                <DisciplineCreateButton onCreate={onCreateDiscipline}/>
             </div>
             
             

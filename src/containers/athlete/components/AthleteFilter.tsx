@@ -10,22 +10,22 @@ function AthleteFilter( {setFilters, disciplines}: AthleteFilterProps) {
     return (
         <div className="flex flex-col w-96">
             <div className="m-2.5 font-bold text-2xl">
-                Filters
+                Filtre
             </div>
             <div className="border">
-                <label className="m-2.5">Disciplines</label>
+                <label className="m-2.5">Discipliner</label>
                 <select
                     className="m-2.5 border"
                     onChange={(e) => setFilters(prev => ({...prev, discipline: e.target.value}))}
                 >
-                    <option value="">All</option>
+                    <option value="">Alle</option>
                     {disciplines.map(discipline => (
                         <option key={discipline.id} value={discipline.name}>{discipline.name}</option>
                     ))}
                 </select>
             </div>
             <div className="border">
-                <label className="m-2.5">Age group</label>
+                <label className="m-2.5">Aldersgruppe</label>
                 <select
                     className="m-2.5 border"
                     onChange={(e) => setFilters(prev => ({...prev, ageGroup: e.target.value}))}
@@ -39,7 +39,7 @@ function AthleteFilter( {setFilters, disciplines}: AthleteFilterProps) {
                 </select>
             </div>
             <div className="border">
-                <label className="m-2.5">Gender</label>
+                <label className="m-2.5">Køn</label>
                 <select
                     className="m-2.5 border"
                     onChange={(e) => setFilters(prev => ({...prev, gender: e.target.value}))}

@@ -251,14 +251,14 @@ function EditModal({ athlete, setIsOpen, onConfirm, disciplines }: IEditModalPro
                             }}
                             className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md"
                         >
-                            Cancel
+                            Annullér
                         </button>
                         <button
                             type="submit"
                             id="save"
                             className="bg-blue-500 text-white px-4 py-2 ml-2 rounded-md"
                         >
-                            Save
+                            Gem
                         </button>
                     </div>
                 </div>
