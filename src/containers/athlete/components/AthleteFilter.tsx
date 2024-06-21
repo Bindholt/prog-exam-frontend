@@ -1,4 +1,3 @@
-import useDisciplines from "../../../hooks/useDisciplines";
 
 interface AthleteFilterProps {
     setFilters: React.Dispatch<React.SetStateAction<IFilter>>;

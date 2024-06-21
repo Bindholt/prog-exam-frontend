@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# Programmerings eksamen juni 2024 - Frontend
+By Christian Bindholt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Made with [React](https://react.dev/), [TypeScript](https://typescriptlang.org/), [Vite](https://vitejs.dev/), [Tailwind CSS](https://tailwindcss.com/)
 
-Currently, two official plugins are available:
+Backend repository: [prog-exam-backend](https://github.com/bindholt/prog-exam-backend)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Setup
+Clone the repository, and navigate to the project directory
+```bash
+git clone https://github.com/emilvn/prog-exam-frontend.git
+cd prog-exam-frontend
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Install dependencies
+```bash
+npm install
+```
+Set up a `.env` file with the following content: *(Change the API URL to the URL of backend server if it's not running on localhost:8080)*
+```dotenv
+VITE_API_URL=http://localhost:8080
+```
+Run the development server
+```bash
+npm run dev
+```
+Open `http://localhost:5173` in your browser to view the running application
