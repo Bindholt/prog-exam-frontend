@@ -65,7 +65,10 @@ function EditModal({setIsOpen, onConfirm, result}: IEditModalProps) {
                                 min={0}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setHours(parseInt(e.target.value));
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0) {
+                                        setHours(value);
+                                    }
                                 }}
                             />
                             <label htmlFor="minutes" className="block mb-2">Minutter:</label>
@@ -78,7 +81,10 @@ function EditModal({setIsOpen, onConfirm, result}: IEditModalProps) {
                                 max={59}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setMinutes(parseInt(e.target.value));
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0 && value <= 59) {
+                                        setMinutes(value);
+                                    }
                                 }}
                             />
                             <label htmlFor="seconds" className="block mb-2">Sekunder:</label>
@@ -91,7 +97,10 @@ function EditModal({setIsOpen, onConfirm, result}: IEditModalProps) {
                                 max={59}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setSeconds(parseInt(e.target.value));
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0 && value <= 59) {
+                                        setSeconds(value);
+                                    }
                                 }}
                             />
                             <label htmlFor="hundredths" className="block mb-2">Hundrededele:</label>
@@ -104,7 +113,10 @@ function EditModal({setIsOpen, onConfirm, result}: IEditModalProps) {
                                 max={99}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setHundredths(parseInt(e.target.value));
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0 && value <= 99) {
+                                        setHundredths(value);
+                                    }
                                 }}
                             />
                         </>
@@ -120,7 +132,10 @@ function EditModal({setIsOpen, onConfirm, result}: IEditModalProps) {
                                     min={0}
                                     onChange={(e) => {
                                         e.preventDefault();
-                                        setMeters(parseInt(e.target.value));
+                                        const value = parseInt(e.target.value);
+                                        if (value >= 0) {
+                                            setMeters(value);
+                                        }
                                     }}
                                 />
                                 <label htmlFor="centimeters" className="block mb-2">Centimeter:</label>
@@ -133,7 +148,10 @@ function EditModal({setIsOpen, onConfirm, result}: IEditModalProps) {
                                     max={99}
                                     onChange={(e) => {
                                         e.preventDefault();
-                                        setCentimeters(parseInt(e.target.value));
+                                        const value = parseInt(e.target.value);
+                                        if (value >= 0 && value <= 99) {
+                                            setCentimeters(value);
+                                        }
                                     }}
                                 />
                             </>
@@ -147,7 +165,10 @@ function EditModal({setIsOpen, onConfirm, result}: IEditModalProps) {
                                 min={0}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setUpdatedResult(e.target.value);
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0) {
+                                        setUpdatedResult(value.toString());
+                                    }
                                 }}
                             />
                         }

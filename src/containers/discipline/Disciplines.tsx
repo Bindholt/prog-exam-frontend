@@ -15,9 +15,13 @@ function Disciplines() {
     }
 
     const onConfirm = async (newResults: IResult[]) => {
-        newResults.forEach(async (result) => {
-            await createResult(result);
-        });
+        for (const result of newResults) {
+            try {
+                await createResult(result);
+            } catch (error) {
+                console.error(`Error creating result: ${error}`);
+            }
+        }
     }
 
     return (

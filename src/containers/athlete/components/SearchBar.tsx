@@ -8,7 +8,7 @@ function SearchBar({ setSearchAthlete }: SearchBarProps) {
     const [search, setSearch] = useState("");
 
     function handleSearch(event: FormEvent) {
-        event.preventDefault(); // Prevent the form from refreshing the page
+        event.preventDefault(); 
         if (search.length > 0) {
             setSearchAthlete(search);
         }

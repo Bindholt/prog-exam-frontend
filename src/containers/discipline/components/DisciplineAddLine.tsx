@@ -90,7 +90,10 @@ function DisciplineAddLine({ athleteId, discipline, setSelectedAthletes, setNewR
                                 min={0}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setHours(parseInt(e.target.value))
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0) {
+                                        setHours(value);
+                                    }
                                 }}
                             />
                             <input
@@ -103,7 +106,10 @@ function DisciplineAddLine({ athleteId, discipline, setSelectedAthletes, setNewR
                                 max={59}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setMinutes(parseInt(e.target.value))
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0 && value <= 59) {
+                                        setMinutes(value);
+                                    }
                                 }}
                             />
                             <input
@@ -116,7 +122,10 @@ function DisciplineAddLine({ athleteId, discipline, setSelectedAthletes, setNewR
                                 max={59}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setSeconds(parseInt(e.target.value))
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0 && value <= 59) {
+                                        setSeconds(value);
+                                    }
                                 }}
                             />
                             <input
@@ -129,7 +138,10 @@ function DisciplineAddLine({ athleteId, discipline, setSelectedAthletes, setNewR
                                 max={99}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setHundredths(parseInt(e.target.value))
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0 && value <= 99) {
+                                        setHundredths(value);
+                                    }
                                 }}
                             />
                         </>
@@ -145,7 +157,10 @@ function DisciplineAddLine({ athleteId, discipline, setSelectedAthletes, setNewR
                                 min={0}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setMeters(parseInt(e.target.value))
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0) {
+                                        setMeters(value);
+                                    }
                                 }}
                             />
                             <input
@@ -158,7 +173,10 @@ function DisciplineAddLine({ athleteId, discipline, setSelectedAthletes, setNewR
                                 max={99}
                                 onChange={(e) => {
                                     e.preventDefault();
-                                    setCentimeters(parseInt(e.target.value))
+                                    const value = parseInt(e.target.value);
+                                    if (value >= 0 && value <= 99) {
+                                        setCentimeters(value);
+                                    }
                                 }}
                             />
                         </>
@@ -173,7 +191,10 @@ function DisciplineAddLine({ athleteId, discipline, setSelectedAthletes, setNewR
                             min={0}
                             onChange={(e) => {
                                 e.preventDefault();
-                                setPoints(parseInt(e.target.value))
+                                const value = parseInt(e.target.value);
+                                if (value >= 0) {
+                                    setPoints(value);
+                                }
                             }}
                         />
                     )}
