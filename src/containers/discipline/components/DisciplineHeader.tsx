@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CreateModal } from "./DisciplineModal";
-import { BsArrowDownCircle, BsArrowUp, BsArrowUpCircle } from "react-icons/bs";
+import { BsArrowDownCircle, BsArrowUpCircle } from "react-icons/bs";
 
 interface IDisciplineHeaderProps {
     discipline: IDiscipline;
