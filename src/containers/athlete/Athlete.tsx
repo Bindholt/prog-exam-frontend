@@ -20,7 +20,6 @@ function Athlete() {
 
     useEffect(() => {
         if (!athletes) return;
-        console.log(athletes)
         const filtered = filterAthletes({athletes, filters});
         setModifiedAthleteList(filtered);
     }, [filters, athletes]);
@@ -78,7 +77,7 @@ function Athlete() {
     }
 
     const getClubs = () => {
-        const clubs = athletes?.map(athlete => athlete.club);
+        const clubs = athletes.map(athlete => athlete.club);
         return Array.from(new Set(clubs));
     }
 
