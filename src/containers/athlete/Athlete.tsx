@@ -20,6 +20,7 @@ function Athlete() {
 
     useEffect(() => {
         if (!athletes) return;
+        console.log(athletes)
         const filtered = filterAthletes({athletes, filters});
         setModifiedAthleteList(filtered);
     }, [filters, athletes]);
@@ -76,6 +77,11 @@ function Athlete() {
         await createAthlete(newAthlete);
     }
 
+    const getClubs = () => {
+        const clubs = athletes?.map(athlete => athlete.club);
+        return Array.from(new Set(clubs));
+    }
+
     return (
         <PageLayout>
             <div className="flex">
@@ -91,7 +97,7 @@ function Athlete() {
                 </div>
                 <div className="flex flex-col w-2/12 m-5 ml-52 ">
                     <AthleteCreateButton onCreateAthlete={onCreateAthlete} disciplines={disciplines} />
-                    <AthleteFilter setFilters={setFilters} disciplines={disciplines} />
+                    <AthleteFilter setFilters={setFilters} disciplines={disciplines} clubs={getClubs()}/>
                 </div>
             </div>
         </PageLayout>

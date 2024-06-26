@@ -39,6 +39,10 @@ const filterAthletes = ({ athletes, filters }: IFilterAthletesProps) => {
             }
         }
 
+        if (filters.club && athlete.club) {
+            matches = matches && athlete.club === filters.club;
+        }
+
         return matches;
     });
 

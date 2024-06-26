@@ -2,10 +2,11 @@
 interface AthleteFilterProps {
     setFilters: React.Dispatch<React.SetStateAction<IFilter>>;
     disciplines: IDiscipline[];
+    clubs: string[];
 }
 
-function AthleteFilter( {setFilters, disciplines}: AthleteFilterProps) {
-
+function AthleteFilter( {setFilters, disciplines, clubs}: AthleteFilterProps) {
+    
 
     return (
         <div className="flex flex-col w-96">
@@ -49,7 +50,18 @@ function AthleteFilter( {setFilters, disciplines}: AthleteFilterProps) {
                     <option value="kvinde">Kvinde</option>
                     <option value="andet">Andet</option>
                 </select>
-
+            </div>
+            <div className="border">
+                <label className="m-2.5">Klub</label>
+                <select
+                    className="m-2.5 border"
+                    onChange={(e) => setFilters(prev => ({...prev, club: e.target.value}))}
+                >
+                    <option value="">Alle</option>
+                    {clubs.map(club => (
+                        <option key={club} value={club}>{club}</option>
+                    ))}
+                </select>
             </div>
         </div>
     )
